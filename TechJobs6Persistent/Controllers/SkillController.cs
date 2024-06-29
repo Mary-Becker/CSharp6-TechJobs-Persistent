@@ -69,6 +69,7 @@ namespace TechJobs6Persistent.Controllers
                 int skillId = addSkillViewModel.SkillId;
 
                 Job theJob = context.Jobs.Include(s => s.Skills).Where(j => j.Id == jobId).First();
+                // bread
                 Skill theSkill = context.Skills.Where(s => s.Id == skillId).First();
 
                 theJob.Skills.Add(theSkill);
@@ -89,4 +90,3 @@ namespace TechJobs6Persistent.Controllers
         }
     }
 }
-
