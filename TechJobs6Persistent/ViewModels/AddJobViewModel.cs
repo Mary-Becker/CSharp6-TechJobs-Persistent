@@ -6,15 +6,26 @@ namespace TechJobs6Persistent.ViewModels;
 
 public class AddJobViewModel
 {
-    [Required(ErrorMessage = "Name is Missing.")]
+    [Required(ErrorMessage = "Job Name Missing.")]
     public string Name { get; set; }
-    [Required(ErrorMessage = "Employer is Missing.")]
-    public int EmployerId { get; set; }
-    public List<SelectListItem> Employers { get; set; }
 
-    public AddJobViewModel()
+    [Required(ErrorMessage = "Employer Missing.")]
+    public int EmployerId { get; set; }
+    public List<SelectListItem>? Employers { get; set; }
+
+    public AddJobViewModel() { }
+
+    public AddJobViewModel(List<Employer> employerList)
     {
         Employers = new List<SelectListItem>();
-    }
 
+        foreach (Employer employers in employerList)
+        {
+            Employers.Add(
+                new SelectListItem 
+                { 
+                    Value = employers.Id.ToString(), Text = employers.Name 
+                });
+        }
+    }
 }

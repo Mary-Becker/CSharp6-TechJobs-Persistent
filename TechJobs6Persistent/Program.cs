@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
-   var connectionString = "server=localhost;user=TechJobs;password=techjobs;database=tech_jobs";
+   var connectionString = "server=localhost;user=techjobs;password=techjobs;database=tech_jobs";
    var serverVersion = new MySqlServerVersion(new Version(8, 0, 36));
 
 builder.Services.AddDbContext<JobDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
